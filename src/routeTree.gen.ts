@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as InventarioRouteImport } from './routes/inventario'
+import { Route as PrediccionRouteImport } from './routes/prediccion'
+import { Route as ProductosRouteImport } from './routes/productos'
+import { Route as RedNeuronalRouteImport } from './routes/red-neuronal'
+import { Route as VentasRouteImport } from './routes/ventas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventarioRoute = InventarioRouteImport.update({
+  id: '/inventario',
+  path: '/inventario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrediccionRoute = PrediccionRouteImport.update({
+  id: '/prediccion',
+  path: '/prediccion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductosRoute = ProductosRouteImport.update({
+  id: '/productos',
+  path: '/productos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedNeuronalRoute = RedNeuronalRouteImport.update({
+  id: '/red-neuronal',
+  path: '/red-neuronal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VentasRoute = VentasRouteImport.update({
+  id: '/ventas',
+  path: '/ventas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/inventario': typeof InventarioRoute
+  '/prediccion': typeof PrediccionRoute
+  '/productos': typeof ProductosRoute
+  '/red-neuronal': typeof RedNeuronalRoute
+  '/ventas': typeof VentasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/inventario': typeof InventarioRoute
+  '/prediccion': typeof PrediccionRoute
+  '/productos': typeof ProductosRoute
+  '/red-neuronal': typeof RedNeuronalRoute
+  '/ventas': typeof VentasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRoute
+  '/inventario': typeof InventarioRoute
+  '/prediccion': typeof PrediccionRoute
+  '/productos': typeof ProductosRoute
+  '/red-neuronal': typeof RedNeuronalRoute
+  '/ventas': typeof VentasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/inventario'
+    | '/prediccion'
+    | '/productos'
+    | '/red-neuronal'
+    | '/ventas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dashboard'
+    | '/inventario'
+    | '/prediccion'
+    | '/productos'
+    | '/red-neuronal'
+    | '/ventas'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/inventario'
+    | '/prediccion'
+    | '/productos'
+    | '/red-neuronal'
+    | '/ventas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRoute
+  InventarioRoute: typeof InventarioRoute
+  PrediccionRoute: typeof PrediccionRoute
+  ProductosRoute: typeof ProductosRoute
+  RedNeuronalRoute: typeof RedNeuronalRoute
+  VentasRoute: typeof VentasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventario': {
+      id: '/inventario'
+      path: '/inventario'
+      fullPath: '/inventario'
+      preLoaderRoute: typeof InventarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prediccion': {
+      id: '/prediccion'
+      path: '/prediccion'
+      fullPath: '/prediccion'
+      preLoaderRoute: typeof PrediccionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productos': {
+      id: '/productos'
+      path: '/productos'
+      fullPath: '/productos'
+      preLoaderRoute: typeof ProductosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/red-neuronal': {
+      id: '/red-neuronal'
+      path: '/red-neuronal'
+      fullPath: '/red-neuronal'
+      preLoaderRoute: typeof RedNeuronalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ventas': {
+      id: '/ventas'
+      path: '/ventas'
+      fullPath: '/ventas'
+      preLoaderRoute: typeof VentasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRoute,
+  InventarioRoute: InventarioRoute,
+  PrediccionRoute: PrediccionRoute,
+  ProductosRoute: ProductosRoute,
+  RedNeuronalRoute: RedNeuronalRoute,
+  VentasRoute: VentasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

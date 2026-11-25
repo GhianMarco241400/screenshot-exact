@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project architecture
+- Keep the requested views as file-based TanStack routes sharing one shell and static sample data, because SmartMarket AI is a visual-only prototype with consistent navigation.
