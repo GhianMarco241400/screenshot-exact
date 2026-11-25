@@ -15,6 +15,8 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bun run build
+      - name: Crear index.html desde el shell SPA
+        run: cp dist/client/_shell.html dist/client/index.html
       - name: Deploy
         uses: Azure/static-web-apps-deploy@v1
         with:
