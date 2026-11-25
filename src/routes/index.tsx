@@ -1,10 +1,14 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
+import { hasDemoSession } from "@/lib/demo-auth";
 import { pageMeta } from "@/lib/page-meta";
 
 export const Route = createFileRoute("/")({
   beforeLoad: () => {
-    throw redirect({ to: "/dashboard" });
+    if (hasDemoSession()) {
+      throw redirect({ to: "/dashboard" });
+    }
+    throw redirect({ to: "/login" });
   },
   head: () =>
     pageMeta(

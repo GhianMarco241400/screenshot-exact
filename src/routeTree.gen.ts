@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as InventarioRouteImport } from './routes/inventario'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrediccionRouteImport } from './routes/prediccion'
 import { Route as ProductosRouteImport } from './routes/productos'
 import { Route as RedNeuronalRouteImport } from './routes/red-neuronal'
@@ -30,6 +31,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const InventarioRoute = InventarioRouteImport.update({
   id: '/inventario',
   path: '/inventario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrediccionRoute = PrediccionRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/inventario': typeof InventarioRoute
+  '/login': typeof LoginRoute
   '/prediccion': typeof PrediccionRoute
   '/productos': typeof ProductosRoute
   '/red-neuronal': typeof RedNeuronalRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/inventario': typeof InventarioRoute
+  '/login': typeof LoginRoute
   '/prediccion': typeof PrediccionRoute
   '/productos': typeof ProductosRoute
   '/red-neuronal': typeof RedNeuronalRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
   '/inventario': typeof InventarioRoute
+  '/login': typeof LoginRoute
   '/prediccion': typeof PrediccionRoute
   '/productos': typeof ProductosRoute
   '/red-neuronal': typeof RedNeuronalRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/inventario'
+    | '/login'
     | '/prediccion'
     | '/productos'
     | '/red-neuronal'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/inventario'
+    | '/login'
     | '/prediccion'
     | '/productos'
     | '/red-neuronal'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/inventario'
+    | '/login'
     | '/prediccion'
     | '/productos'
     | '/red-neuronal'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
   InventarioRoute: typeof InventarioRoute
+  LoginRoute: typeof LoginRoute
   PrediccionRoute: typeof PrediccionRoute
   ProductosRoute: typeof ProductosRoute
   RedNeuronalRoute: typeof RedNeuronalRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/inventario'
       fullPath: '/inventario'
       preLoaderRoute: typeof InventarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/prediccion': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
   InventarioRoute: InventarioRoute,
+  LoginRoute: LoginRoute,
   PrediccionRoute: PrediccionRoute,
   ProductosRoute: ProductosRoute,
   RedNeuronalRoute: RedNeuronalRoute,
